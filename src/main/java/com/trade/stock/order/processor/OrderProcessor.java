@@ -14,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
+
 /**
  * @author prajaktkulkarni
  * This class is brain of stock order processing.
@@ -236,11 +238,10 @@ public class OrderProcessor {
      */
     private Comparator<TradeOrderEntity> getComparator(TradeType tradeType) {
             return tradeType == TradeType.BUY ?
-                    Comparator.comparing(TradeOrderEntity::getOrderType)
+                    comparing(TradeOrderEntity::getOrderType)
                             .thenComparing(TradeOrderEntity::getPrice)
-                            .thenComparing(TradeOrderEntity::getTradeTime) :  Comparator
-                    .comparing(TradeOrderEntity::getOrderType)
-                    .thenComparing((o1, o2) -> Double.compare(o2.getPrice().doubleValue() , o1.getPrice().doubleValue()))
+                            .thenComparing(TradeOrderEntity::getTradeTime) :  comparing(TradeOrderEntity::getOrderType)
+                    .thenComparing(comparing(TradeOrderEntity::getPrice).reversed())
                     .thenComparing(TradeOrderEntity::getTradeTime);
 
         }

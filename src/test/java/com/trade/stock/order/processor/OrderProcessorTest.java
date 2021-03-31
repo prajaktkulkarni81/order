@@ -68,11 +68,14 @@ public class OrderProcessorTest {
     @Test
     public void test_PriceTime_Validation_With2SameBuy_OneSell()
     {
-        processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(12345L,"HDFC",TradeType.BUY,BigInteger.TEN, BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis()));
+        processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(12345L,"HDFC",TradeType.BUY,BigInteger.TEN,
+                BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis()));
 
-        processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(34567L,"HDFC",TradeType.BUY,BigInteger.TEN, BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis()));
+        processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(34567L,"HDFC",TradeType.BUY,BigInteger.TEN,
+                BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis()));
 
-        assertAll(() -> processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(76898L,"HDFC",TradeType.SELL,BigInteger.TEN, BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis())));
+        assertAll(() -> processor.process(TestDataCreatorForOrderProcessor.createTradeOrderEntity(76898L,"HDFC",TradeType.SELL,
+                BigInteger.TEN, BigDecimal.TEN, OrderType.LIMIT,System.currentTimeMillis())));
         assertEquals(1, OrderProcessor.buyMap.get("HDFC").size());
         assertEquals(0, OrderProcessor.sellMap.get("HDFC") != null ? OrderProcessor.sellMap.get("HDFC").size() : 0 );
         assertEquals(34567L, OrderProcessor.buyMap.get("HDFC").peek().getOrderId());
