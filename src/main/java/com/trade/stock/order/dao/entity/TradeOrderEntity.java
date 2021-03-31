@@ -11,14 +11,12 @@ import java.math.BigInteger;
 @EqualsAndHashCode
 public class TradeOrderEntity implements Serializable {
 
-    @EqualsAndHashCode.Exclude
-    Long orderId;
-    String stockTicker;
-    Long tradeTime;
-    BigDecimal price;
-    BigInteger quantity;
-    TradeType tradeType;
-    @EqualsAndHashCode.Exclude
-    OrderType orderType;
+    private Long orderId;
+    private String stockTicker;
+    private Long tradeTime;
+    private BigDecimal price;
+    private BigInteger quantity;
+    private TradeType tradeType;
+    private OrderType orderType;
 
 }

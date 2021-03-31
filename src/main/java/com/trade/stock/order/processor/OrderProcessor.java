@@ -150,7 +150,8 @@ public class OrderProcessor {
         boolean hasOrderNoOrderProcess = false;
         log.info("PROCESS ORDER : START");
         if((order.getTradeType() == TradeType.BUY && order.getPrice().compareTo(possibleMatchOrder.getPrice()) >= 0) ||
-                (order.getTradeType() == TradeType.SELL && order.getPrice().compareTo(possibleMatchOrder.getPrice()) <= 0) || order.getOrderType() == OrderType.MARKET)
+                (order.getTradeType() == TradeType.SELL && order.getPrice().compareTo(possibleMatchOrder.getPrice()) <= 0)
+                || order.getOrderType() == OrderType.MARKET)
         {
             BigInteger originalQty = order.getQuantity();
             BigInteger possibleMatchOrigQty = possibleMatchOrder.getQuantity();
@@ -239,8 +240,8 @@ public class OrderProcessor {
                             .thenComparing(TradeOrderEntity::getPrice)
                             .thenComparing(TradeOrderEntity::getTradeTime) :  Comparator
                     .comparing(TradeOrderEntity::getOrderType)
-                    .thenComparing(TradeOrderEntity::getPrice)
-                    .thenComparing(TradeOrderEntity::getTradeTime).reversed();
+                    .thenComparing((o1, o2) -> Double.compare(o2.getPrice().doubleValue() , o1.getPrice().doubleValue()))
+                    .thenComparing(TradeOrderEntity::getTradeTime);
 
         }
 

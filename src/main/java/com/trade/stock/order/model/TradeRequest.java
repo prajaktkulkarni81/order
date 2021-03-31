@@ -14,11 +14,13 @@ import java.math.BigInteger;
 public class TradeRequest {
 
     @NotBlank(message = "Stock Ticker is mandatory")
-    String stockTicker;
-    BigDecimal price;
+    private String stockTicker;
+    private BigDecimal price;
     @NotNull(message = "Quantity is mandatory")
     @Positive
-    BigInteger quantity;
-    TradeType tradeType;
-    OrderType orderType;
+    private BigInteger quantity;
+    @NotNull(message = "Trade Type is mandatory")
+    private TradeType tradeType;
+    @NotNull(message = "Order Type is mandatory")
+    private OrderType orderType;
 }

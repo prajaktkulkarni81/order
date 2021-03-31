@@ -51,8 +51,9 @@ public class StockOrderIntegrationTest {
                 .content("{\n" +
                         "    \"stockTicker\" : \"HDFC\",\n" +
                         "    \"price\" : \"100\",\n" +
-                        "    \"quantity\" : \"50\",\n" +
-                        "    \"tradeType\" : \"BUY\"\n" +
+                        "    \"quantity\" : \"100\",\n" +
+                        "    \"tradeType\" : \"BUY\",\n" +
+                        "    \"orderType\" : \"MARKET\"\n" +
                         "}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -92,8 +93,9 @@ public class StockOrderIntegrationTest {
                 .content("{\n" +
                         "    \"stockTicker\" : \"HDFC\",\n" +
                         "    \"price\" : \"100\",\n" +
-                        "    \"quantity\" : \"50\",\n" +
-                        "    \"tradeType\" : \"BUY\"\n" +
+                        "    \"quantity\" : \"100\",\n" +
+                        "    \"tradeType\" : \"BUY\",\n" +
+                        "    \"orderType\" : \"MARKET\"\n" +
                         "}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is5xxServerError())
@@ -140,8 +142,9 @@ public class StockOrderIntegrationTest {
                 .content("{\n" +
                         "    \"stockTicker\" : \"HDFC\",\n" +
                         "    \"price\" : \"100\",\n" +
-                        "    \"quantity\" : \"50\",\n" +
-                        "    \"tradeType\" : \"BUY\"\n" +
+                        "    \"quantity\" : \"100\",\n" +
+                        "    \"tradeType\" : \"BUY\",\n" +
+                        "    \"orderType\" : \"MARKET\"\n" +
                         "}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -162,8 +165,9 @@ public class StockOrderIntegrationTest {
                 .content("{\n" +
                         "    \"stockTicker\" : \"HDFC\",\n" +
                         "    \"price\" : \"100\",\n" +
-                        "    \"quantity\" : \"50\",\n" +
-                        "    \"tradeType\" : \"BUY\"\n" +
+                        "    \"quantity\" : \"100\",\n" +
+                        "    \"tradeType\" : \"BUY\",\n" +
+                        "    \"orderType\" : \"MARKET\"\n" +
                         "}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
