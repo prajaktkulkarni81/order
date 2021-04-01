@@ -238,10 +238,10 @@ public class OrderProcessor {
      */
     private Comparator<TradeOrderEntity> getComparator(TradeType tradeType) {
             return tradeType == TradeType.BUY ?
-                    comparing(TradeOrderEntity::getOrderType)
-                            .thenComparing(TradeOrderEntity::getPrice)
-                            .thenComparing(TradeOrderEntity::getTradeTime) :  comparing(TradeOrderEntity::getOrderType)
-                    .thenComparing(comparing(TradeOrderEntity::getPrice).reversed())
+                    comparing(TradeOrderEntity::getOrderType).reversed()
+                            .thenComparing(TradeOrderEntity::getPrice).reversed()
+                            .thenComparing(TradeOrderEntity::getTradeTime) :  comparing(TradeOrderEntity::getOrderType).reversed()
+                    .thenComparing(TradeOrderEntity::getPrice)
                     .thenComparing(TradeOrderEntity::getTradeTime);
 
         }
